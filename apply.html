@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apply for Membership | 371AURELIAR</title>
+<meta name="description" content="Apply for membership of 371AURELIAR, a private members club in Riga. Limited places, personally reviewed.">
+<meta name="theme-color" content="#0E0E0F">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="seal" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.55"/>
+    <circle cx="32" cy="32" r="25.5" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.32"/>
+    <path d="M32 2.5v5M32 56.5v5M2.5 32h5M56.5 32h5" stroke="currentColor" stroke-width="0.8" opacity="0.55"/>
+    <text x="32" y="38.5" text-anchor="middle" font-family="Cormorant Garamond, serif"
+          font-size="17" letter-spacing="0.5" fill="currentColor">371</text>
+  </symbol>
+  <symbol id="arrow" viewBox="0 0 24 12">
+    <path d="M0 6h22M17 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+  </symbol>
+</svg>
+
+<main class="apply">
+
+  <!-- ------------------------------------------------------------ aside -->
+  <aside class="apply__aside">
+    <!-- FILM SLOT: assets/video/apply.mp4, or a single still -->
+    <div class="frame frame--fill" aria-hidden="true">
+      <!--
+      <video autoplay muted loop playsinline preload="none" poster="assets/img/apply-poster.jpg">
+        <source src="assets/video/apply.mp4" type="video/mp4">
+      </video>
+      -->
+    </div>
+    <div class="scrim" aria-hidden="true"></div>
+
+    <a class="seal" href="index.html" aria-label="371AURELIAR home" style="justify-items:start">
+      <svg aria-hidden="true" style="width:52px"><use href="#seal"></use></svg>
+      <span class="seal__word">Aureliar</span>
+    </a>
+
+    <div>
+      <h1 class="display display--l">Tell us<br>who you <em>are</em></h1>
+      <p class="lede" style="margin-top:1.75rem; max-width:34ch">
+        Every application is read by the founding circle. There is no tier to buy and no
+        waiting list to game. We look for character before credentials.
+      </p>
+    </div>
+
+    <div>
+      <ul class="ticks">
+        <li>Limited places, opened a few times a year</li>
+        <li>Personally reviewed, usually within two weeks</li>
+        <li>Most conversations begin over coffee in Riga</li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- ------------------------------------------------------------- form -->
+  <div class="apply__main">
+
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:1.5rem; margin-bottom:clamp(2.5rem,5vw,4rem)">
+      <p class="eyebrow">Membership application</p>
+      <a class="textlink" href="index.html">Back to the club</a>
+    </div>
+
+    <form class="form" id="apply-form" novalidate>
+
+      <fieldset class="fieldset">
+        <div class="fieldset__head"><span>I</span><h2>You</h2></div>
+        <div class="grid-2">
+          <div class="field">
+            <label for="firstName">First name</label>
+            <input id="firstName" name="firstName" type="text" autocomplete="given-name" required>
+            <span class="field__error" data-error></span>
+          </div>
+          <div class="field">
+            <label for="lastName">Last name</label>
+            <input id="lastName" name="lastName" type="text" autocomplete="family-name" required>
+            <span class="field__error" data-error></span>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+            <span class="field__error" data-error></span>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+371" required>
+            <span class="field__error" data-error></span>
+          </div>
+          <div class="field">
+            <label for="city">City</label>
+            <input id="city" name="city" type="text" autocomplete="address-level2" placeholder="Riga" required>
+            <span class="field__error" data-error></span>
+          </div>
+          <div class="field">
+            <label for="birthYear">Year of birth <span style="opacity:.7;letter-spacing:.12em">(optional)</span></label>
+            <input id="birthYear" name="birthYear" type="text" inputmode="numeric" maxlength="4" placeholder="1993">
+            <span class="field__error" data-error></span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="fieldset">
+        <div class="fieldset__head"><span>II</span><h2>Your work</h2></div>
+        <div class="grid-2">
+          <div class="field">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" autocomplete="organization" required>
+            <span class="field__error" data-error></span>
+          </div>
+          <div class="field">
+            <label for="role">Role</label>
+            <input id="role" name="role" type="text" autocomplete="organization-title" required>
+            <span class="field__error" data-error></span>
+          </div>
+          <div class="field">
+            <label for="field">Field</label>
+            <select id="field" name="field" required>
+              <option value="" selected disabled></option>
+              <option>Founder / Entrepreneur</option>
+              <option>Finance / Investment</option>
+              <option>Technology</option>
+              <option>Real estate</option>
+              <option>Law / Advisory</option>
+              <option>Creative / Culture</option>
+              <option>Sport</option>
+              <option>Other</option>
+            </select>
+            <span class="field__error" data-error></span>
+          </div>
+          <div class="field">
+            <label for="instagram">Instagram or LinkedIn <span style="opacity:.7;letter-spacing:.12em">(optional)</span></label>
+            <input id="instagram" name="instagram" type="text" placeholder="@">
+            <span class="field__error" data-error></span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="fieldset">
+        <div class="fieldset__head"><span>III</span><h2>The circle</h2></div>
+        <div class="grid-2">
+          <div class="field field--full">
+            <label for="referral">Who introduced you? <span style="opacity:.7;letter-spacing:.12em">(optional)</span></label>
+            <input id="referral" name="referral" type="text" placeholder="A member's name, or how you found us">
+            <span class="field__error" data-error></span>
+          </div>
+          <div class="field field--full">
+            <label for="motivation">Why 371AURELIAR?</label>
+            <textarea id="motivation" name="motivation" rows="4" placeholder="A few honest lines. We read them all." required></textarea>
+            <span class="field__error" data-error></span>
+          </div>
+          <div class="field field--full">
+            <label for="contribution">What would you bring to the room? <span style="opacity:.7;letter-spacing:.12em">(optional)</span></label>
+            <textarea id="contribution" name="contribution" rows="3"></textarea>
+            <span class="field__error" data-error></span>
+          </div>
+        </div>
+
+        <label class="consent" style="margin-top:2.25rem">
+          <input type="checkbox" name="consent" required>
+          <span>I consent to 371AURELIAR storing these details for the purpose of reviewing my application, and to being contacted about it.</span>
+        </label>
+        <span class="field__error" data-error data-for="consent"></span>
+      </fieldset>
+
+      <div class="form__submit">
+        <button class="btn btn--dark" type="submit" id="submit-btn">
+          <span>Submit application</span>
+          <svg width="18" height="9" aria-hidden="true"><use href="#arrow"></use></svg>
+        </button>
+        <p class="form__status" id="form-status" role="status" aria-live="polite">Limited places, personally reviewed.</p>
+      </div>
+    </form>
+
+    <section class="confirm" id="confirm" aria-live="polite">
+      <svg width="56" height="56" style="color:var(--gold-ink)" aria-hidden="true"><use href="#seal"></use></svg>
+      <p class="eyebrow">Received</p>
+      <h2 class="display display--l">Thank you.</h2>
+      <p class="lede">
+        Your application is with the founding circle. Every submission is read by hand,
+        and we reply to each one, usually within two weeks.
+      </p>
+      <p class="lede">Until then, the door stays where you found it.</p>
+      <div>
+        <a class="btn btn--dark" href="index.html">
+          <span>Return to the club</span>
+          <svg width="18" height="9" aria-hidden="true"><use href="#arrow"></use></svg>
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
