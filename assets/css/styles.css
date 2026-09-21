@@ -40,8 +40,11 @@
   --hair-cream:     rgba(23, 23, 26, 0.16);
   --hair-cream-2:   rgba(23, 23, 26, 0.30);
 
-  --serif: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
-  --sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  /* Type: an editorial serif for display, a quiet grotesque for text.
+     Newsreader keeps a high x-height and sturdy stems, so it stays legible
+     on ink at small sizes and in the wide-tracked caps this page leans on. */
+  --serif: 'Newsreader', 'Iowan Old Style', Georgia, serif;
+  --sans:  'Archivo', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 
   --gutter: clamp(1.25rem, 4vw, 4.5rem);
   --band-y: clamp(5.5rem, 11vw, 10rem);
@@ -73,9 +76,9 @@ body {
   background: var(--ink);
   color: var(--on-ink);
   font-family: var(--sans);
-  font-size: 16px;
+  font-size: 15.75px;
   font-weight: 300;
-  line-height: 1.7;
+  line-height: 1.72;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;
@@ -130,23 +133,24 @@ a { color: inherit; text-decoration: none; }
 
 .display {
   font-family: var(--serif);
+  font-optical-sizing: auto;
   font-weight: 300;
   line-height: 1.08;
-  letter-spacing: -0.012em;
+  letter-spacing: -0.004em;
   font-variant-ligatures: common-ligatures discretionary-ligatures;
   text-wrap: balance;
 }
 
-.display--xl { font-size: clamp(2.5rem, 6.1vw, 5.5rem); line-height: 1.04; letter-spacing: -0.02em; }
-.display--l  { font-size: clamp(2.1rem, 4.8vw, 4.25rem); line-height: 1.06; letter-spacing: -0.016em; }
-.display--m  { font-size: clamp(1.7rem, 2.8vw, 2.75rem); line-height: 1.14; }
+.display--xl { font-size: clamp(2.4rem, 5.7vw, 5.15rem); line-height: 1.05; letter-spacing: -0.016em; }
+.display--l  { font-size: clamp(2rem, 4.5vw, 3.95rem);    line-height: 1.07; letter-spacing: -0.012em; }
+.display--m  { font-size: clamp(1.65rem, 2.7vw, 2.6rem);  line-height: 1.15; }
 
 .display em {
   font-style: italic;
   color: var(--gold-soft);
   /* italic descenders (y, g, p) need headroom at these line-heights */
-  line-height: 1.12;
-  padding-bottom: 0.04em;
+  line-height: 1.14;
+  padding-bottom: 0.05em;
 }
 
 .band--cream .display em { color: var(--gold-ink); }
@@ -348,7 +352,7 @@ a { color: inherit; text-decoration: none; }
 .header__left  { display: flex; align-items: center; gap: 1.75rem; }
 .header__right { display: flex; align-items: center; justify-content: flex-end; gap: 1rem; }
 
-.header__link, .header .seal, .header .burger { color: var(--cream); }
+.header__link, .header .mark, .header .burger { color: var(--cream); }
 .header .btn { color: var(--ink); }
 
 .header__link {
@@ -362,31 +366,48 @@ a { color: inherit; text-decoration: none; }
 
 .header__link:hover { color: var(--cream); }
 
-/* centred seal. Horizontal at rest so the bar stays under 80px. */
-.seal {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+/* The mark: the 371AURELIAR wordmark as used on aureliar.com. Display face,
+   wide tracking, a hairline beneath. Horizontal in the bar so the header stays
+   under 80px; .mark--lg is the centred, stacked lockup. */
+.mark {
+  display: grid;
+  width: max-content;
+  justify-items: center;
+  gap: 0.5rem;
   line-height: 1;
 }
 
-.seal svg {
-  width: 34px;
-  height: 34px;
-  flex: 0 0 auto;
-  transition: transform 0.6s var(--ease);
-}
-
-.seal:hover svg { transform: rotate(-12deg); }
-
-.seal__word {
+.mark__word {
   font-family: var(--serif);
-  font-size: clamp(0.78rem, 0.95vw, 0.9rem);
-  letter-spacing: 0.42em;
-  text-indent: 0.42em;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-size: clamp(0.82rem, 1vw, 0.98rem);
+  letter-spacing: 0.26em;
+  margin-right: -0.26em;
   text-transform: uppercase;
   white-space: nowrap;
 }
+
+.mark__rule {
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.32;
+  transform: scaleX(0.8);
+  transition: transform 0.6s var(--ease), opacity 0.6s var(--ease);
+}
+
+.mark:hover .mark__rule { transform: scaleX(1); opacity: 0.6; }
+
+.mark--lg { gap: 1rem; }
+
+.mark--lg .mark__word {
+  font-size: clamp(1.25rem, 2.4vw, 1.9rem);
+  letter-spacing: 0.3em;
+  margin-right: -0.3em;
+}
+
+.mark--lg .mark__rule { width: 5rem; transform: none; }
 
 .burger {
   width: 44px; height: 44px;
@@ -1060,7 +1081,7 @@ body.is-submitted .confirm { display: grid; }
 @media (max-width: 899px) {
   .header__left .header__link { display: none; }
   .header__right .btn { display: none; }
-  .seal__word { letter-spacing: 0.3em; text-indent: 0.3em; }
+  .mark__word { letter-spacing: 0.24em; margin-right: -0.24em; }
   .split--offset > *:first-child { transform: none; }
 }
 

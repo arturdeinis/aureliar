@@ -10,20 +10,13 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="seal" viewBox="0 0 64 64">
-    <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.55"/>
-    <circle cx="32" cy="32" r="25.5" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.32"/>
-    <path d="M32 2.5v5M32 56.5v5M2.5 32h5M56.5 32h5" stroke="currentColor" stroke-width="0.8" opacity="0.55"/>
-    <text x="32" y="38.5" text-anchor="middle" font-family="Cormorant Garamond, serif"
-          font-size="17" letter-spacing="0.5" fill="currentColor">371</text>
-  </symbol>
   <symbol id="arrow" viewBox="0 0 24 12">
     <path d="M0 6h22M17 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.2"/>
   </symbol>
@@ -43,9 +36,9 @@
     </div>
     <div class="scrim" aria-hidden="true"></div>
 
-    <a class="seal" href="index.html" aria-label="371AURELIAR home" style="justify-items:start">
-      <svg aria-hidden="true" style="width:52px"><use href="#seal"></use></svg>
-      <span class="seal__word">Aureliar</span>
+    <a class="mark" href="index.html" aria-label="371AURELIAR home">
+      <span class="mark__word">371Aureliar</span>
+      <span class="mark__rule" aria-hidden="true"></span>
     </a>
 
     <div>
@@ -184,7 +177,10 @@
     </form>
 
     <section class="confirm" id="confirm" aria-live="polite">
-      <svg width="56" height="56" style="color:var(--gold-ink)" aria-hidden="true"><use href="#seal"></use></svg>
+      <span class="mark mark--lg" style="margin:0 auto; color:var(--gold-ink)">
+        <span class="mark__word">371Aureliar</span>
+        <span class="mark__rule" aria-hidden="true"></span>
+      </span>
       <p class="eyebrow">Received</p>
       <h2 class="display display--l">Thank you.</h2>
       <p class="lede">

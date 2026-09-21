@@ -28,7 +28,9 @@ Editorial and photography-led, built against the reference clubs (CORE, Soho
 House, Tuxedo Society, 39 Monte Carlo) without copying their templating.
 
 - Ink `#0E0E0F`, cream `#F2EFE9`, champagne `#C9A66B`.
-- Cormorant Garamond (display) + Inter (interface), from Google Fonts.
+- Newsreader (display) + Archivo (interface), from Google Fonts. The display
+  face is set light with the optical-size axis on, so headlines stay fine and
+  small type stays legible on ink.
 - Every colour, gutter and rhythm value is a CSS variable at the top of
   `styles.css`.
 
@@ -46,6 +48,9 @@ Rules the page is built to, worth keeping if you extend it:
 - **Every section has its own layout family.** Full-bleed hero, centred
   manifesto, asymmetric bento, quote-over-film, offset split, horizontal rail,
   event ledger, numbered ledger, accordion. No two repeat.
+- **The logo is the wordmark.** `371AURELIAR` in the display face, tracked
+  wide, with a hairline beneath it, as on aureliar.com. `.mark` is the inline
+  lockup for the bar, `.mark--lg` the centred one. There is no picture mark.
 - **Captions live below pictures**, never on top of them (`.frame-cap`).
 - **Contrast is verified, not assumed.** Both pages currently have zero text
   below WCAG AA. If you add a muted colour, check it.
