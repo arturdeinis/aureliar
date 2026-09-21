@@ -481,8 +481,20 @@ body.is-menu .menu__list a {
               color 0.35s var(--ease);
 }
 
-.menu__list a:hover { color: var(--gold-soft); }
-.menu__list .btn { margin-top: 1.5rem; font-family: var(--sans); }
+.menu__list a:not(.btn):hover { color: var(--gold-soft); }
+
+/* The CTA is a button, not a menu line: .menu__list a would otherwise hand it
+   the display size and cream text, leaving a cream label on a cream pill. */
+.menu__list .btn {
+  margin-top: 1.5rem;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.menu__list .btn:hover { color: var(--ink); }
 
 .menu__foot {
   display: flex;
