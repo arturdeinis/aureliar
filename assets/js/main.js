@@ -53,6 +53,8 @@
   function updateHeader(y) {
     if (!header) return;
     header.classList.toggle('is-stuck', y > 40);
+    var max = doc.documentElement.scrollHeight - vh;
+    header.style.setProperty('--sp', max > 0 ? clamp(y / max, 0, 1).toFixed(4) : 0);
     var goingDown = y > lastY + 2;
     var goingUp = y < lastY - 2;
     if (goingDown && y > vh * 0.6 && !body.classList.contains('is-menu')) header.classList.add('is-hidden');
@@ -194,7 +196,7 @@
       var o = clamp(lit - i, 0, 1);
       var w = words[i];
       if (w._pill) w.classList.toggle('is-on', o > 0.3);
-      else if (w._o !== o) { w.style.setProperty('--o', (0.16 + o * 0.84).toFixed(3)); w._o = o; }
+      else if (w._o !== o) { w.style.setProperty('--o', (0.22 + o * 0.78).toFixed(3)); w._o = o; }
     }
   }
 
