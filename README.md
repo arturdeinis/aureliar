@@ -1,75 +1,88 @@
 # 371AURELIAR
 
-Website for 371AURELIAR, a private members club in Riga.
-Static HTML, CSS and vanilla JS. No build step, no dependencies.
+Website for 371AURELIAR, a private members' society in Riga.
+Static HTML, CSS and vanilla JS. No build step.
 
 ```
-index.html          Home
-apply.html          Membership application
-assets/css/         One stylesheet
-assets/js/main.js   Header, menu, reveals, moments rail, FAQ, form + CRM hook
-assets/video/       Film slots (see the README in there)
-assets/img/         Photography slots, posters, og image
+index.html                 Home
+apply.html                 Membership application
+assets/css/styles.css      One stylesheet
+assets/js/main.js          Every interaction, the scroll loop, form + CRM hook
+assets/js/vendor/lenis     Smooth wheel scrolling (MIT, vendored, optional)
+assets/video/              Hero film, reel, 720p mobile cut
+assets/img/                Stills pulled from the film, og image
 favicon.svg
 ```
 
 ## Run it
 
 ```
-python3 -m http.server 8080
+python3 -m http.server 8371
 ```
-then open http://localhost:8080
+then open http://localhost:8371
 
-Deploys to any static host: Netlify, Vercel, Cloudflare Pages, S3.
+Deploys to any static host: GitHub Pages, Netlify, Vercel, Cloudflare Pages.
+
+## Content
+
+Copy follows aureliar.com: Society, the four chapters (Opening Night,
+Padel & Dinner, Beach Club, The Return), Chapter V "Top 100" on 10 October,
+the founders' statement, membership, and the six questions.
+
+The Chapter V countdown reads its target from `data-countdown` on `.countdown`
+in `index.html` (currently `2026-10-10T19:00:00+03:00`). Change the date there
+when the next chapter is announced.
+
+## Media
+
+Everything visual comes from one 14.6 s 4K film of Chapter IV (The Return,
+ShiYuzu). From it:
+
+| File | Use |
+|---|---|
+| `video/hero.mp4`, `hero.webm` | Hero background, 1080p, no audio |
+| `video/hero-720.mp4` | Hero on screens up to 900 px wide |
+| `video/reel.mp4` | The scroll-expanding film, slowed to 0.6x |
+| `img/hero-poster.jpg`, `reel-poster.jpg` | Posters |
+| `img/club-*.jpg` | Chapter stills (4:5) |
+| `img/moment-1..6.jpg` | The Return gallery |
+| `img/ambassador.jpg` | Founders section |
+| `img/apply.jpg` | Application page |
+| `img/wide.jpg` | Membership background |
+| `img/pill-1..3.jpg` | Inline pictures in the manifesto |
+| `img/og.jpg` | Share card, 1200 x 630 |
+
+Chapters I to III currently use stills from The Return, because the film is
+the only footage we have. Swap in real photos from Opening Night, Padel &
+Dinner and Beach Club when they exist: same filenames, 4:5.
+
+The source `.mov` is git-ignored; re-encode from it with ffmpeg if needed.
 
 ## Design
 
-Editorial and photography-led, built against the reference clubs (CORE, Soho
-House, Tuxedo Society, 39 Monte Carlo) without copying their templating.
+Film-led and editorial. Each section is one scene with one layout idea and
+one motion idea.
 
-- Ink `#0E0E0F`, cream `#F2EFE9`, champagne `#C9A66B`.
-- Newsreader (display) + Archivo (interface), from Google Fonts. The display
-  face is set light with the optical-size axis on, so headlines stay fine and
-  small type stays legible on ink.
-- Every colour, gutter and rhythm value is a CSS variable at the top of
-  `styles.css`.
+- Ink `#0E0E0F`, cream `#F2EFE9`, champagne `#C9A66B`. `--gold` on ink,
+  `--gold-ink` on cream (AA).
+- Newsreader (display) + Archivo (interface), from Google Fonts.
+- Sections are introduced by an index label (`.label`: italic serif number and
+  a tracked caption), numbered to match the menu.
+- Pills for interactive elements, square for everything else. The manifesto's
+  inline pictures are the one deliberate exception.
+- Captions sit below pictures, never on top of them.
 
-Rules the page is built to, worth keeping if you extend it:
+Scenes, in order: hero film with a curtain intro; manifesto whose words light
+up with scroll; the archive, a sticky picture that wipes between chapters;
+the reel, which expands from an inset to full bleed; The Return, a gallery
+that travels sideways while you scroll; Chapter V with a live countdown; the
+founders' letter; membership over a parallax still; questions; footer with a
+live Riga clock and the wordmark rising into view.
 
-- **Two theme blocks, not stripes.** Sections that share a surface are grouped
-  and joined with `.band--joined`. The page flips ink/cream four times total,
-  never section by section.
-- **One accent.** `--gold` reads on ink, `--gold-ink` is the darker value that
-  clears WCAG AA on cream. Never use `--gold` on a cream band.
-- **Shape system.** Interactive elements are full pills, everything else is
-  square. Inputs are a hairline underline only.
-- **Eyebrows are rationed.** Three on the whole home page (hero, The Club,
-  Membership). Section headlines carry the rest. Do not add a fourth.
-- **Every section has its own layout family.** Full-bleed hero, centred
-  manifesto, asymmetric bento, quote-over-film, offset split, horizontal rail,
-  event ledger, numbered ledger, accordion. No two repeat.
-- **The logo is the wordmark.** `371AURELIAR` in the display face, tracked
-  wide, with a hairline beneath it, as on aureliar.com. `.mark` is the inline
-  lockup for the bar, `.mark--lg` the centred one. There is no picture mark.
-- **Captions live below pictures**, never on top of them (`.frame-cap`).
-- **Contrast is verified, not assumed.** Both pages currently have zero text
-  below WCAG AA. If you add a muted colour, check it.
-
-Motion is restrained and `prefers-reduced-motion` is fully respected. There are
-no scroll listeners: the header uses an IntersectionObserver sentinel and the
-reveals use an IntersectionObserver.
-
-## Media slots
-
-Everything visual is a `.frame`. Each one already carries its ratio and a film
-grade, so the page composes correctly before any assets exist. Each slot is
-marked with an HTML comment naming the file and orientation it expects. Drop an
-`<img>` or `<video>` inside the frame and it takes over.
-
-See `assets/video/README.md` and `assets/img/README.md` for the full list.
-
-Still outstanding from the client: the four film files, and `assets/img/og.jpg`
-for link previews.
+Motion runs from one `requestAnimationFrame` loop in `main.js`. Everything
+respects `prefers-reduced-motion`: no curtain, no smooth scroll, no parallax,
+the film starts paused, the gallery becomes a swipe rail. The hero film has a
+visible pause control, and every film pauses when off screen.
 
 ## Connecting the CRM
 
@@ -80,19 +93,13 @@ var ENDPOINT = null;   // -> your CRM / Zapier / serverless endpoint
 ```
 
 While it is `null` the form validates, shows the confirmation screen and logs
-the payload, so the flow is demoable. Set it to a URL and this JSON is POSTed:
+the payload, so the flow is demoable. Set it to a URL and this JSON is POSTed.
+Field names match the live application form on aureliar.com:
 
 ```json
 {
-  "firstName": "", "lastName": "", "email": "", "phone": "", "city": "",
-  "birthYear": "", "company": "", "role": "", "field": "", "instagram": "",
-  "referral": "", "motivation": "", "contribution": "",
+  "firstName": "", "lastName": "", "email": "", "phone": "", "country": "",
+  "instagram": "", "building": "", "contribution": "", "characterAnswer": "",
   "consent": true, "source": "aureliar.com/apply", "submittedAt": "ISO-8601"
 }
 ```
-
-Field names and order are unchanged from the first build, so anything already
-mapped downstream keeps working.
-
-If the CRM needs a plain form POST instead, set `action`/`method` on
-`#apply-form` and delete the `fetch` block.

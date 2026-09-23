@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Apply for Membership | 371AURELIAR</title>
-<meta name="description" content="Apply for membership of 371AURELIAR, a private members club in Riga. Limited places, personally reviewed.">
+<meta name="description" content="Apply for membership of 371AURELIAR, a private members' society in Riga. By application only, personally reviewed.">
 <meta name="theme-color" content="#0E0E0F">
 <meta name="robots" content="noindex">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -12,9 +12,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
+<script>document.documentElement.className='js is-seen'</script>
 </head>
 
 <body>
+
+<a class="skip" href="#apply-form">Skip to the form</a>
+
+<div class="curtain" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="arrow" viewBox="0 0 24 12">
@@ -22,49 +28,50 @@
   </symbol>
 </svg>
 
-<main class="apply">
+<main class="apply" id="main">
 
   <!-- ------------------------------------------------------------ aside -->
   <aside class="apply__aside">
-    <!-- FILM SLOT: assets/video/apply.mp4, or a single still -->
-    <div class="frame frame--fill" aria-hidden="true">
-      <!--
-      <video autoplay muted loop playsinline preload="none" poster="assets/img/apply-poster.jpg">
-        <source src="assets/video/apply.mp4" type="video/mp4">
-      </video>
-      -->
+    <div class="apply__media" aria-hidden="true">
+      <img src="assets/img/apply.jpg" alt="">
     </div>
-    <div class="scrim" aria-hidden="true"></div>
+    <div class="apply__scrim" aria-hidden="true"></div>
 
-    <a class="mark" href="index.html" aria-label="371AURELIAR home">
-      <span class="mark__word">371Aureliar</span>
-      <span class="mark__rule" aria-hidden="true"></span>
-    </a>
+    <div class="apply__top">
+      <a class="mark" href="index.html" aria-label="371AURELIAR home">
+        <span class="mark__word">371Aureliar</span>
+        <span class="mark__rule" aria-hidden="true"></span>
+      </a>
+      <a class="btn btn--sm btn--glass" href="index.html"><span>Back to the club</span></a>
+    </div>
 
     <div>
-      <h1 class="display display--l">Tell us<br>who you <em>are</em></h1>
-      <p class="lede" style="margin-top:1.75rem; max-width:34ch">
-        Every application is read by the founding circle. There is no tier to buy and no
-        waiting list to game. We look for character before credentials.
+      <h1 class="display display--l">
+        <span class="line"><span data-intro style="--i:1">An application</span></span>
+        <span class="line"><span data-intro style="--i:2">to <em>join</em>.</span></span>
+      </h1>
+      <p class="lede" data-intro style="--i:4; margin-top:1.75rem; max-width:36ch">
+        For people building something serious, at any stage. Each application is
+        considered carefully.
       </p>
     </div>
 
-    <div>
-      <ul class="ticks">
-        <li>Limited places, opened a few times a year</li>
-        <li>Personally reviewed, usually within two weeks</li>
-        <li>Most conversations begin over coffee in Riga</li>
-      </ul>
-    </div>
+    <ul class="apply__points" data-intro style="--i:5">
+      <li><span>i.</span>You do not apply for an event. You apply to belong.</li>
+      <li><span>ii.</span>Private by design, personally reviewed</li>
+      <li><span>iii.</span>Either way, you hear from us by email</li>
+    </ul>
   </aside>
 
   <!-- ------------------------------------------------------------- form -->
   <div class="apply__main">
 
-    <div style="display:flex; justify-content:space-between; align-items:center; gap:1.5rem; margin-bottom:clamp(2.5rem,5vw,4rem)">
-      <p class="eyebrow">Membership application</p>
-      <a class="textlink" href="index.html">Back to the club</a>
+    <div class="apply__head">
+      <p class="label"><span>✦</span>Membership</p>
+      <p class="meta">One minute</p>
     </div>
+
+    <div class="progress-steps" aria-hidden="true"><span></span><span></span></div>
 
     <form class="form" id="apply-form" novalidate>
 
@@ -72,7 +79,7 @@
         <div class="fieldset__head"><span>I</span><h2>You</h2></div>
         <div class="grid-2">
           <div class="field">
-            <label for="firstName">First name</label>
+            <label for="firstName">Name</label>
             <input id="firstName" name="firstName" type="text" autocomplete="given-name" required>
             <span class="field__error" data-error></span>
           </div>
@@ -87,75 +94,39 @@
             <span class="field__error" data-error></span>
           </div>
           <div class="field">
-            <label for="phone">Phone</label>
+            <label for="phone">Phone number</label>
             <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+371" required>
             <span class="field__error" data-error></span>
           </div>
           <div class="field">
-            <label for="city">City</label>
-            <input id="city" name="city" type="text" autocomplete="address-level2" placeholder="Riga" required>
+            <label for="country">Country</label>
+            <input id="country" name="country" type="text" autocomplete="country-name" placeholder="Latvia" required>
             <span class="field__error" data-error></span>
           </div>
           <div class="field">
-            <label for="birthYear">Year of birth <span style="opacity:.7;letter-spacing:.12em">(optional)</span></label>
-            <input id="birthYear" name="birthYear" type="text" inputmode="numeric" maxlength="4" placeholder="1993">
+            <label for="instagram">Instagram</label>
+            <input id="instagram" name="instagram" type="text" placeholder="@" required>
             <span class="field__error" data-error></span>
           </div>
         </div>
       </fieldset>
 
       <fieldset class="fieldset">
-        <div class="fieldset__head"><span>II</span><h2>Your work</h2></div>
-        <div class="grid-2">
-          <div class="field">
-            <label for="company">Company</label>
-            <input id="company" name="company" type="text" autocomplete="organization" required>
-            <span class="field__error" data-error></span>
-          </div>
-          <div class="field">
-            <label for="role">Role</label>
-            <input id="role" name="role" type="text" autocomplete="organization-title" required>
-            <span class="field__error" data-error></span>
-          </div>
-          <div class="field">
-            <label for="field">Field</label>
-            <select id="field" name="field" required>
-              <option value="" selected disabled></option>
-              <option>Founder / Entrepreneur</option>
-              <option>Finance / Investment</option>
-              <option>Technology</option>
-              <option>Real estate</option>
-              <option>Law / Advisory</option>
-              <option>Creative / Culture</option>
-              <option>Sport</option>
-              <option>Other</option>
-            </select>
-            <span class="field__error" data-error></span>
-          </div>
-          <div class="field">
-            <label for="instagram">Instagram or LinkedIn <span style="opacity:.7;letter-spacing:.12em">(optional)</span></label>
-            <input id="instagram" name="instagram" type="text" placeholder="@">
-            <span class="field__error" data-error></span>
-          </div>
-        </div>
-      </fieldset>
-
-      <fieldset class="fieldset">
-        <div class="fieldset__head"><span>III</span><h2>The circle</h2></div>
+        <div class="fieldset__head"><span>II</span><h2>What you bring</h2></div>
         <div class="grid-2">
           <div class="field field--full">
-            <label for="referral">Who introduced you? <span style="opacity:.7;letter-spacing:.12em">(optional)</span></label>
-            <input id="referral" name="referral" type="text" placeholder="A member's name, or how you found us">
+            <label for="building">What are you building?</label>
+            <textarea id="building" name="building" rows="3" placeholder="The company, the project, the work." required></textarea>
             <span class="field__error" data-error></span>
           </div>
           <div class="field field--full">
-            <label for="motivation">Why 371AURELIAR?</label>
-            <textarea id="motivation" name="motivation" rows="4" placeholder="A few honest lines. We read them all." required></textarea>
+            <label for="contribution">What would you add to 371Aureliar?</label>
+            <textarea id="contribution" name="contribution" rows="3" required></textarea>
             <span class="field__error" data-error></span>
           </div>
           <div class="field field--full">
-            <label for="contribution">What would you bring to the room? <span style="opacity:.7;letter-spacing:.12em">(optional)</span></label>
-            <textarea id="contribution" name="contribution" rows="3"></textarea>
+            <label for="characterAnswer">What standard do you refuse to compromise?</label>
+            <textarea id="characterAnswer" name="characterAnswer" rows="3" placeholder="A few honest lines. We read them all." required></textarea>
             <span class="field__error" data-error></span>
           </div>
         </div>
@@ -172,22 +143,18 @@
           <span>Submit application</span>
           <svg width="18" height="9" aria-hidden="true"><use href="#arrow"></use></svg>
         </button>
-        <p class="form__status" id="form-status" role="status" aria-live="polite">Limited places, personally reviewed.</p>
+        <p class="form__status" id="form-status" role="status" aria-live="polite">Private by design. Personally reviewed.</p>
       </div>
     </form>
 
     <section class="confirm" id="confirm" aria-live="polite">
-      <span class="mark mark--lg" style="margin:0 auto; color:var(--gold-ink)">
-        <span class="mark__word">371Aureliar</span>
-        <span class="mark__rule" aria-hidden="true"></span>
-      </span>
-      <p class="eyebrow">Received</p>
-      <h2 class="display display--l">Thank you.</h2>
+      <p class="label"><span>✦</span>Received</p>
+      <h2 class="display display--l">Thank <em>you</em>.</h2>
       <p class="lede">
-        Your application is with the founding circle. Every submission is read by hand,
-        and we reply to each one, usually within two weeks.
+        Your application is with us. Each one is considered carefully, and you will
+        hear from us by email either way.
       </p>
-      <p class="lede">Until then, the door stays where you found it.</p>
+      <p class="lede">If you belong here, you already know it.</p>
       <div>
         <a class="btn btn--dark" href="index.html">
           <span>Return to the club</span>
